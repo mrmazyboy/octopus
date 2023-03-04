@@ -1,0 +1,5 @@
+const PRODUCT_TYPES = {};
+PRODUCT_TYPES[(PRODUCT_TYPES.AUCTION = 1)] = 'Аукцион';
+PRODUCT_TYPES[(PRODUCT_TYPES.ONE_TIME_SELL = 2)] = 'Разовая продажа';
+
+export { PRODUCT_TYPES };
