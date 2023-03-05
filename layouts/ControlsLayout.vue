@@ -9,6 +9,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2px;
+  gap: 20px;
+  @media screen and (max-width: 767.98px) {
+    flex-wrap: wrap;
+  }
 }
 </style>

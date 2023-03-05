@@ -8,11 +8,13 @@
       <div v-for="product in products" :key="product.id" class="product__item">
         <div class="product__info">
           <!-- <img class="product__img" :src="product.img" alt="prodcut" /> -->
-          <img
-            class="product__img"
-            src="@/assets/images/product.png"
-            alt="prodcut"
-          />
+          <div class="product__img-container">
+            <img
+              class="product__img"
+              src="@/assets/images/product.png"
+              alt="prodcut"
+            />
+          </div>
           <div class="product__description">
             <div class="product__type">
               {{ product.typeId | productTypeText }}
@@ -24,7 +26,9 @@
                 src="@/assets/icons/geo.svg"
                 alt="geo"
               />
-              {{ product.city }}
+              <span>
+                {{ product.city }}
+              </span>
             </div>
             <div class="product__seller">
               <div class="product__seller-title">Продавец</div>
@@ -78,11 +82,12 @@ const CostPerPiece = Vue.component('CostPerPiece', {
   render(h) {
     return h('div', { attrs: { class: 'product__count' } }, [
       h('div', {
+        style: { fontSize: '13px' },
         attrs: { class: 'product__count-text' },
         domProps: { innerHTML: 'Стоимость за штуку' }
       }),
       h('div', {
-        style: { color: '#2D3B87' },
+        style: { color: '#2D3B87', fontSize: '13px' },
         attrs: { class: 'product__count-number' },
         domProps: {
           innerHTML:
@@ -177,7 +182,7 @@ export default {
     border-radius: $large-border-radius;
     margin-top: 34px;
     color: $light-gray;
-    @media screen and (max-width: $tablet) {
+    @media screen and (max-width: $laptop) {
       flex-direction: column;
     }
   }
@@ -186,23 +191,49 @@ export default {
     display: flex;
     padding: 20px;
 
-    @media screen and (max-width: $laptop) {
+    @media screen and (max-width: $mobile) {
       flex-direction: column;
     }
   }
 
-  &__img {
-    border-radius: $border-radius;
+  &__img-container {
+    position: relative;
     min-height: 256px;
     max-height: 256px;
     min-width: 256px;
     max-width: 256px;
+    @media screen and (max-width: $tablet) {
+      min-height: 128px;
+      max-height: 128px;
+      min-width: 128px;
+      max-width: 128px;
+    }
+    @media screen and (max-width: $mobile) {
+      min-height: 256px;
+      max-height: 256px;
+      width: 100%;
+      min-width: unset;
+      max-width: unset;
+      // min-width: 256px;
+      // max-width: 256px;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    border-radius: $border-radius;
   }
 
   &__description {
-    padding: 0 20px;
-    @media screen and (max-width: $laptop) {
-      padding: 10px 0;
+    // padding: 0 20px;
+    padding-left: 20px;
+    @media screen and (max-width: $mobile) {
+      padding: 20px 0 0;
     }
   }
 
@@ -221,17 +252,23 @@ export default {
 
   &__city {
     margin-top: 28px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     border-radius: $small-border-radius;
     background-color: $gray;
-    white-space: nowrap;
-    width: min-content;
+    // white-space: nowrap;
+    // width: min-content;
     font-weight: 400;
     font-size: 13px;
     color: $light-blue;
     padding: 4.5px 8px 4.5px 10.5px;
     margin-bottom: 12px;
+
+    // span {
+    //   white-space: nowrap;
+    //   overflow: hidden;
+    //   text-overflow: ellipsis;
+    // }
   }
 
   &__city-img {
@@ -293,6 +330,7 @@ export default {
     flex-direction: column;
     @media screen and (max-width: $tablet) {
       // outline: 1px solid green;
+      min-width: unset;
       border-left: none;
       border-top: $base-border;
       border-top-left-radius: $large-border-radius;
@@ -318,10 +356,14 @@ export default {
 
   &__count-text {
     color: $light-gray;
+    font-size: 13px;
+    line-height: 1;
   }
 
   &__count-number {
     color: $black;
+    font-size: 13px;
+    line-height: 1;
   }
 }
 </style>

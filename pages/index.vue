@@ -1,39 +1,37 @@
 <template>
-  <div class="container-fluid">
-    <div class="container">
-      <HeaderComponent />
+  <div class="container">
+    <HeaderComponent />
 
-      <div class="navigation">
-        <NuxtLink class="navigation__link _favorites _btn" to="/favorites">
-          <img
-            class="navigation__link-icon"
-            src="@/assets/icons/blue-heart.svg"
-            alt="favorites"
-          />
-          Избраноое
-        </NuxtLink>
+    <div class="navigation">
+      <NuxtLink class="navigation__link _favorites _btn" to="/favorites">
+        <img
+          class="navigation__link-icon"
+          src="@/assets/icons/blue-heart.svg"
+          alt="favorites"
+        />
+        Избраноое
+      </NuxtLink>
 
-        <NuxtLink class="navigation__link _main _btn" to="/">
-          <img
-            class="navigation__link-icon"
-            src="@/assets/icons/box.svg"
-            alt="stock"
-          />
-          Склад
-        </NuxtLink>
+      <NuxtLink class="navigation__link _main _btn" to="/">
+        <img
+          class="navigation__link-icon"
+          src="@/assets/icons/box.svg"
+          alt="stock"
+        />
+        Склад
+      </NuxtLink>
 
-        <NuxtLink class="navigation__link _disappears _btn" to="/disappears">
-          <img
-            class="navigation__link-icon"
-            src="@/assets/icons/bag.svg"
-            alt="disappers"
-          />
-          Сделки
-        </NuxtLink>
-      </div>
-
-      <NuxtChild :is-loading="isLoading" :tab-list="tabList" />
+      <NuxtLink class="navigation__link _disappears _btn" to="/disappears">
+        <img
+          class="navigation__link-icon"
+          src="@/assets/icons/bag.svg"
+          alt="disappers"
+        />
+        Сделки
+      </NuxtLink>
     </div>
+
+    <NuxtChild :is-loading="isLoading" :tab-list="tabList" />
   </div>
 </template>
 
@@ -87,30 +85,13 @@ export default {
 <style lang="scss" scoped>
 @import '../styles/constants.scss';
 
-.container-fluid {
-  width: 100vw;
-  background-color: $white;
-  display: flex;
-  justify-content: center;
-}
-
 .container {
-  width: 1200px;
+  max-width: 1240px;
+  width: 100%;
   display: flex;
   flex-direction: column;
-
-  @media screen and (max-width: $desktop) {
-    width: 1024px;
-  }
-  @media screen and (max-width: $laptop) {
-    width: 768px;
-  }
-  @media screen and (max-width: $tablet) {
-    width: 480px;
-  }
-  @media screen and (max-width: $mobile) {
-    width: 100%;
-  }
+  padding: 0 20px;
+  margin: 0 auto;
 }
 
 .navigation {

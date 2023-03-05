@@ -68,5 +68,14 @@ export default {
     background-color: $dark-blue;
     border-radius: $border-radius;
   }
+
+  @media screen and (max-width: $tablet) {
+    width: 100%;
+
+    &__input {
+      max-width: unset;
+      width: 100%;
+    }
+  }
 }
 </style>

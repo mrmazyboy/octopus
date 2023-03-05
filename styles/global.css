@@ -6,7 +6,7 @@
 }
 
 ._btn:hover {
-  box-shadow: 0 0 4px #969dc3;
+  box-shadow: 0 4px 8px rgba(77, 89, 122, 0.2);
 }
 
 ._btn:active {
